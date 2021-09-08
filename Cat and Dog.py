@@ -15,7 +15,7 @@ for catagory in catagories:
         #plt.show()
         break
     break
-#till now running fine
+
 
 new_array = cv2.resize(img_array, (100,100))
 plt.imshow(new_array, cmap='gray')
@@ -59,9 +59,7 @@ pickle_out.close()
 pickle_in = open("X.pickle", "rb")
 X=pickle.load(pickle_in)
 
-#=====================================================================#
-#model creation
-#=====================================================================#
+
 import tensorflow as tf
 from tensorflow import keras
 
@@ -87,7 +85,7 @@ model.compile(loss='binary_crossentropy', optimizer='Adam', metrics=['accuracy']
 
 model.fit(X, y, batch_size=32, epochs=7, verbose=1)
 
-#save to disk
+
 
 model_json_catsanddogs = model.to_json()
 with open ('model.json', 'w') as json_file:
